@@ -39,7 +39,8 @@ db.once('open', () => {
  console.log('db.once');
 });
 
-
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 /*==============================
 =            Routes            =
 ==============================*/
@@ -58,7 +59,7 @@ function seeder(howMany) {
   var card;
   var letters = ['a','q','x','b','r','y','c','s','z'];
   var stat = [1,2,3,1,2,3,1,2,3];
-  for (var i = 0; i < 3; i++){
+  for (var i = 0; i < howMany; i++){
     card = new Card({ "title" : letters[i]+" Task", "description" : "some desc", "priority" : "URGENT", "status" : stat[i], "createdBy" : "DevLeague", "assignedTo" : "Tyler"});
     card.save();
   }
@@ -72,9 +73,6 @@ app.put('/update', function(req, res) {
 });
 
 app.put('/lefter', function(req, res) {
-  // if(req.body.id===req.body.id){
-    console.log('haha');
-  // }
   Card.update({ _id: req.body.id},
      { $inc: {status: -1}}, () => {
     res.json({});
@@ -96,7 +94,7 @@ app.delete('/delete', function(req, res) {
 
 app.post('/seed', (req, res) => {
   // console.log(req.body);
-　seeder(3);
+　seeder(req.body.num);
   res.json({message: 'Seeded!'});
 });
 
@@ -169,8 +167,6 @@ if (isDeveloping) {
     res.write(middleware.fileSystem.readFileSync(path.resolve(__dirname, 'dist/index.html')));
     res.end();
   };
-  app.use(bodyParser.urlencoded({ extended: true }));
-  app.use(bodyParser.json());
   app.use(middleware);
   app.use(webpackHotMiddleware(compiler));
   app.get('*', response);

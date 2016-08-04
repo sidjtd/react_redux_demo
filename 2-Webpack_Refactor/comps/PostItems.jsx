@@ -10,7 +10,7 @@ class PostItems extends React.Component {
     this.deleteCard = this.deleteCard.bind(this)
     this.leftMove = this.leftMove.bind(this)
     this.rightMove = this.rightMove.bind(this)
-  }
+  };
   componentDidMount() {
     this.setState({
       _id: this.props._id,

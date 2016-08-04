@@ -1,7 +1,8 @@
+'use strict';
 import React from 'react';
 import PostColumns from './PostColumns.jsx';
+// import styles from './BigKanban.scss';
 
-'use strict';
 /*==================================
 =            Big Kanban            =
 ==================================*/
@@ -27,7 +28,7 @@ class BigKanban extends React.Component {
     this.getMongoData();
   };
 
-  getMongoData(){
+  getMongoData(card){
     let componentContext = this;
     var oReq = new XMLHttpRequest();
     oReq.addEventListener("load", function () {

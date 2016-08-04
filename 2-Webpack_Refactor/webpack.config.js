@@ -28,7 +28,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development'),
+      'process.env.NODE_ENV': JSON.stringify('development')
     }),
   ],
   module: {
@@ -51,21 +51,15 @@ module.exports = {
       loader: 'url?limit=10000'
     },
       {
-      test: /\.css$/,
-      loader:
-        "style-loader!css-loader" },
-
-      {
       test: /(\.scss$|\.css$)/,
+
       loaders: [
-        { test: /\.scss$/, loader: "style!css!autoprefixer!sass" },
-      ]
-      // loaders: [
-      //   'style',
-      //   'css?modules&importLoaders=1' +
-      //   '&localIdentName=[path][local]__[hash:base64:5]!sass',
-      //   'sass',
-      // ],
+        'style',
+        'css',
+        // 'css?modules&importLoaders=1' +
+        // '&localIdentName=[path][local]__[hash:base64:5]!sass',
+        'sass',
+      ],
     }],
   }
 };

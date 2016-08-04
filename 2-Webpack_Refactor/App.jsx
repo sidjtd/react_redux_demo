@@ -1,6 +1,5 @@
 import React from 'react';
 import BigKanban from './comps/BigKanban.jsx';
-require("./scss/styles.scss");
 
 class App extends React.Component {
   render() {

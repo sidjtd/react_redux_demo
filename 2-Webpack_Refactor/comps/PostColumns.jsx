@@ -1,10 +1,19 @@
+'use strict';
 import React from 'react';
 import PostItems from './PostItems.jsx';
-'use strict';
 /*===================================
 =            PostColumns            =
 ===================================*/
 class PostColumns extends React.Component {
+  constructor(){
+    super();
+    this.state = {
+      toggler : false,
+      ColData : [],
+      ColDataTwo : [],
+      ColDataThree : []
+    }
+  };
   render() {
     var parent = this;
     var theNode = this.props.data.map( function (passedData) {
