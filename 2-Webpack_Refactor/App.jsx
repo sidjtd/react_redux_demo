@@ -1,11 +1,12 @@
 import React from 'react';
-import RedditPage from './reddit/RedditPage.jsx';
+import BigKanban from './comps/BigKanban.jsx';
+require("./scss/styles.scss");
 
 class App extends React.Component {
   render() {
     return (
       <div>
-        <RedditPage redditUrl='https://www.reddit.com/r/Showerthoughts.json' />
+        <BigKanban />
       </div>
     )
   }

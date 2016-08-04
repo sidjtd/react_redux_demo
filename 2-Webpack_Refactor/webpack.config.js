@@ -1,5 +1,4 @@
 'use strict';
-
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
@@ -34,6 +33,7 @@ module.exports = {
   ],
   module: {
     loaders: [{
+
       test: /(\.js$|\.jsx$)/,
       exclude: /node_modules/,
       loader: 'babel',
@@ -49,14 +49,23 @@ module.exports = {
     }, {
       test: /\.(mp4|webm)$/,
       loader: 'url?limit=10000'
-    }, {
+    },
+      {
+      test: /\.css$/,
+      loader:
+        "style-loader!css-loader" },
+
+      {
       test: /(\.scss$|\.css$)/,
       loaders: [
-        'style',
-        'css?modules&importLoaders=1' +
-        '&localIdentName=[path][local]__[hash:base64:5]!sass',
-        'sass',
-      ],
+        { test: /\.scss$/, loader: "style!css!autoprefixer!sass" },
+      ]
+      // loaders: [
+      //   'style',
+      //   'css?modules&importLoaders=1' +
+      //   '&localIdentName=[path][local]__[hash:base64:5]!sass',
+      //   'sass',
+      // ],
     }],
   }
 };
